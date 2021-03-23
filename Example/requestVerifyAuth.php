@@ -11,7 +11,8 @@
   * - 본인인증 서비스에서 이용기관이 생성하는 Token은 사용자가 전자서명할 원문이 됩니다. 이는 보안을 위해 1회용으로 생성해야 합니다.
   * - 사용자는 이용기관이 생성한 1회용 토큰을 서명하고, 이용기관은 그 서명값을 검증함으로써 사용자에 대한 인증의 역할을 수행하게 됩니다.
   */
-
+	include	'testUserInfo.php';
+	$UserInfo = new UserInfo();
   include 'common.php';
 
   // Kakaocert 이용기관코드, Kakaocert 파트너 사이트에서 확인
@@ -27,13 +28,13 @@
   $RequestVerifyAuth->Expires_in = 60;
 
   // 수신자 생년월일, 형식 : YYYYMMDD
-  $RequestVerifyAuth->ReceiverBirthDay = '19700101';
+  $RequestVerifyAuth->ReceiverBirthDay = $UserInfo->birth;
 
   // 수신자 휴대폰번호
-  $RequestVerifyAuth->ReceiverHP = '010111222';
+  $RequestVerifyAuth->ReceiverHP = $UserInfo->tel;
 
   // 수신자 성명
-  $RequestVerifyAuth->ReceiverName = '테스트';
+  $RequestVerifyAuth->ReceiverName = $UserInfo->name;
 
   // 별칭코드, 이용기관이 생성한 별칭코드 (파트너 사이트에서 확인가능)
   // 카카오톡 인증메시지 중 "요청기관" 항목에 표시

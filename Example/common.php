@@ -25,4 +25,6 @@
     // 인증토큰에 대한 IP제한기능 사용여부, 권장(true)
     $KakaocertService->IPRestrictOnOff(true);
 
+    // 로컬아이피 설정 추가 필요
+
 ?>
