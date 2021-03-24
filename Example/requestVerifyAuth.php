@@ -65,6 +65,7 @@
   $RequestVerifyAuth->PayLoad = 'Payload123';
 
   try {
+		//KakaocertService는 common.php에서 인스턴스화 되어 있음
     $receiptID = $KakaocertService->requestVerifyAuth($clientCode, $RequestVerifyAuth);
   }
   catch(KakaocertException $pe) {
